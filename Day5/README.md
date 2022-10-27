@@ -79,7 +79,7 @@ az ad sp create-for-rbac -n "TekTutor-Terraform" --role="Contributor" --scopes="
 
 Expected output
 <pre>
-(jegan@tektutor.org)az ad sp create-for-rbac -n "TekTutor-Terraform" --role="Contributor" --scopes="/subscriptions/<your-azure-subscription-id>"
+(jegan@tektutor.org)<b>az ad sp create-for-rbac -n "TekTutor-Terraform" --role="Contributor" --scopes="/subscriptions/<your-azure-subscription-id>"</b>
 Creating 'Contributor' role assignment under scope '/subscriptions/c0a81cd4-e4ff-4f6a-a613-0d70aced5676'
 The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
 {
