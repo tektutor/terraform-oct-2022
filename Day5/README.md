@@ -77,6 +77,49 @@ az ad sp create-for-rbac -n "TekTutor-Terraform" --role="Contributor" --scopes="
 
 ```
 
+Expected output
+<pre>
+(jegan@tektutor.org)az ad sp create-for-rbac -n "TekTutor-Terraform" --role="Contributor" --scopes="/subscriptions/<your-azure-subscription-id>"
+Creating 'Contributor' role assignment under scope '/subscriptions/c0a81cd4-e4ff-4f6a-a613-0d70aced5676'
+The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
+{
+  "appId": "<your-app-id>",
+  "displayName": "TekTutor-Terraform",
+  "password": "<your-password>",
+  "tenant": "<your-tenant-id>"
+}
+</pre>
+
+Now you need to edit the providers.tf with the below details.  To need to fillup the details below based on above output.
+<pre>
+terraform {
+  required_version = ">=0.12"
+
+  required_providers {
+    azurerm = { 
+        source = "hashicorp/azurerm"
+        version = "~>2.0"
+    }   
+    random = { 
+        source = "hashicorp/random"
+        version = "~>3.0"
+    }   
+
+    tls = { 
+        source = "hashicorp/tls"
+        version = "~>4.0"
+    }   
+ }
+}
+
+provider "azurerm" {
+  features {}
+  subscription_id = "<your-azure-subscription-id-goes-here>"
+  client_id = "you-appId-goes-here"
+  client_secret = "your-application-password-goes-here"
+  tenant_id = "your-application-tenant-id-goes-here"
+}
+</pre>
 
 ## Creating a self-hosted Docker Agent to use in your Azure pipeline
 
