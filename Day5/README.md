@@ -67,6 +67,17 @@ steps:
 
 </pre>
 
+
+## Lab - Creating an Azure Pipeline that runs Terraform scripts to create azure resources
+
+The first step towards this process involves authenticating using our azure credentials.  As we are about to automate this process, we need to create a service principle i.e Register our application via Azure Active Directory.
+
+```
+az ad sp create-for-rbac -n "TekTutor-Terraform" --role="Contributor" --scopes="/subscriptions/<subscription-id>"
+
+```
+
+
 ## Creating a self-hosted Docker Agent to use in your Azure pipeline
 
 Create a Dockerfile with below content
