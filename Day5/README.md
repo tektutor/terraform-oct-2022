@@ -121,6 +121,9 @@ provider "azurerm" {
 }
 </pre>
 
+Now you may execute the azure pipeline as shown below
+
+
 ## Creating a self-hosted Docker Agent to use in your Azure pipeline
 
 Create a Dockerfile with below content
